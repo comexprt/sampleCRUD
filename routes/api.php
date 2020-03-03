@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-Use App\Article;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +15,17 @@ Use App\Article;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
-Route::post('list','Users@list');
+Route::get('list','Users@list');
 
-Route::post('login', 'API\UserController@login');
-Route::post('register', 'API\UserController@register');
+Route::post('login', 'UserController@login');
+Route::post('register', 'UserController@register');
 
 Route::group(['middleware' => 'auth:api'], function(){
-Route::post('details', 'API\UserController@details');
+Route::post('details', 'UserController@details');
 });
+
