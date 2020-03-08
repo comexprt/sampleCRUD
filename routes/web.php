@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::resource('task','NoteController');
+
+Route::get('/',function(){
+	return redirect()->route('task.index');
+});
 
 Route::resource('ajax-posts', 'ajaxcrud\AjaxPostController');
