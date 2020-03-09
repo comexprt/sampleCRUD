@@ -12,10 +12,10 @@
 */
 
 
-Route::resource('task','NoteController');
+Route::resource('note','NoteController');
 
 Route::get('/',function(){
-	return redirect()->route('task.index');
+	return redirect()->route('note.index');
 });
 
 Route::resource('ajax-posts', 'ajaxcrud\AjaxPostController');

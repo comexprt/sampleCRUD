@@ -13,7 +13,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-        //
+        return  "This is the index page";
     }
 
     /**
@@ -23,7 +23,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        return view('notes.create');
     }
 
     /**
