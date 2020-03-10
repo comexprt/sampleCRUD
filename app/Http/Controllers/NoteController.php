@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Note;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class NoteController extends Controller
 {
@@ -34,7 +36,32 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate The Data
+        $this->validate($request, [
+            'name' =>  'required|string|max:255|min:3',
+            'description' => 'required|string|max:10000|min:10',
+            'due_date' => 'required|date',
+        ]);
+        // Create a New Task
+
+        $note = new Note;
+        // Assign the Task data from our request
+
+        $note->name=$request->name;
+        $note->description=$request->description;
+        $note->due_date=$request->due_date;
+        // Save the Task
+
+
+        $note ->save();
+
+        //Flash Session Message with Success
+
+        Session::flash('success', 'Created Task Successfully');
+        // Return A Redirect
+
+        return redirect()->route('note.create');
+
     }
 
     /**
